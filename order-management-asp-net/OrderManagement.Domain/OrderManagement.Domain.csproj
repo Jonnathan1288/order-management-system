@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\Business.cs" Link="Entities\Business.cs" />
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\Category.cs" Link="Entities\Category.cs" />
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\Customer.cs" Link="Entities\Customer.cs" />
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\Order.cs" Link="Entities\Order.cs" />
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\OrderDetail.cs" Link="Entities\OrderDetail.cs" />
+    <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\OrderManagementDbContext.cs" Link="Entities\OrderManagementDbContext.cs" />
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\PaymentMethod.cs" Link="Entities\PaymentMethod.cs" />
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\Product.cs" Link="Entities\Product.cs" />
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\ShoppingCart.cs" Link="Entities\ShoppingCart.cs" />
@@ -20,10 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
-=======
->>>>>>> 6f77bc9a1602b8675287c6e6b0c14576060dc9bf
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\" />
   </ItemGroup>
 
 </Project>
