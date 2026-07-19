@@ -1,0 +1,173 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E1900412-0571-4509-9F7C-378823E559F3}|BCrypt\\BCrypt.csproj|c:\\users\\javie\\onedrive\\documentos\\studies\\uees\\3_2026\\systems_design\\final_project\\ordermanagement.api\\bcrypt\\bcrypt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1900412-0571-4509-9F7C-378823E559F3}|BCrypt\\BCrypt.csproj|solutionrelative:bcrypt\\bcrypt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1900412-0571-4509-9F7C-378823E559F3}|BCrypt\\BCrypt.csproj|c:\\users\\javie\\onedrive\\documentos\\studies\\uees\\3_2026\\systems_design\\final_project\\ordermanagement.api\\bcrypt\\data\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1900412-0571-4509-9F7C-378823E559F3}|BCrypt\\BCrypt.csproj|solutionrelative:bcrypt\\data\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1900412-0571-4509-9F7C-378823E559F3}|BCrypt\\BCrypt.csproj|c:\\users\\javie\\onedrive\\documentos\\studies\\uees\\3_2026\\systems_design\\final_project\\ordermanagement.api\\bcrypt\\data\\bcryptutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1900412-0571-4509-9F7C-378823E559F3}|BCrypt\\BCrypt.csproj|solutionrelative:bcrypt\\data\\bcryptutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1900412-0571-4509-9F7C-378823E559F3}|BCrypt\\BCrypt.csproj|c:\\users\\javie\\onedrive\\documentos\\studies\\uees\\3_2026\\systems_design\\final_project\\ordermanagement.api\\bcrypt\\data\\bcryptarrays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1900412-0571-4509-9F7C-378823E559F3}|BCrypt\\BCrypt.csproj|solutionrelative:bcrypt\\data\\bcryptarrays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93844B3F-DE19-4667-A696-E2F09237509C}|OrderManagement.API\\OrderManagement.API.csproj|c:\\users\\javie\\onedrive\\documentos\\studies\\uees\\3_2026\\systems_design\\final_project\\ordermanagement.api\\ordermanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{93844B3F-DE19-4667-A696-E2F09237509C}|OrderManagement.API\\OrderManagement.API.csproj|solutionrelative:ordermanagement.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{417CD7E3-9907-4155-BB4B-A1C3F2361C92}|OrderManagement.Infrastructure\\OrderManagement.Infrastructure.csproj|c:\\users\\javie\\onedrive\\documentos\\studies\\uees\\3_2026\\systems_design\\final_project\\ordermanagement.api\\ordermanagement.infrastructure\\ordermanagement.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{417CD7E3-9907-4155-BB4B-A1C3F2361C92}|OrderManagement.Infrastructure\\OrderManagement.Infrastructure.csproj|solutionrelative:ordermanagement.infrastructure\\ordermanagement.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB5B8762-8D92-4479-8781-DE9F15321D2E}|OrderManagement.Domain\\OrderManagement.Domain.csproj|c:\\users\\javie\\onedrive\\documentos\\studies\\uees\\3_2026\\systems_design\\final_project\\ordermanagement.api\\ordermanagement.domain\\ordermanagement.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DB5B8762-8D92-4479-8781-DE9F15321D2E}|OrderManagement.Domain\\OrderManagement.Domain.csproj|solutionrelative:ordermanagement.domain\\ordermanagement.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93844B3F-DE19-4667-A696-E2F09237509C}|OrderManagement.API\\OrderManagement.API.csproj|c:\\users\\javie\\onedrive\\documentos\\studies\\uees\\3_2026\\systems_design\\final_project\\ordermanagement.api\\ordermanagement.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{93844B3F-DE19-4667-A696-E2F09237509C}|OrderManagement.API\\OrderManagement.API.csproj|solutionrelative:ordermanagement.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{93844B3F-DE19-4667-A696-E2F09237509C}|OrderManagement.API\\OrderManagement.API.csproj|c:\\users\\javie\\onedrive\\documentos\\studies\\uees\\3_2026\\systems_design\\final_project\\ordermanagement.api\\ordermanagement.api\\ordermanagement.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{93844B3F-DE19-4667-A696-E2F09237509C}|OrderManagement.API\\OrderManagement.API.csproj|solutionrelative:ordermanagement.api\\ordermanagement.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 136,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\BCrypt\\Data\\Constants.cs",
+              "RelativeDocumentMoniker": "BCrypt\\Data\\Constants.cs",
+              "ToolTip": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\BCrypt\\Data\\Constants.cs",
+              "RelativeToolTip": "BCrypt\\Data\\Constants.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T18:37:46.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BCryptUtils.cs",
+              "DocumentMoniker": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\BCrypt\\Data\\BCryptUtils.cs",
+              "RelativeDocumentMoniker": "BCrypt\\Data\\BCryptUtils.cs",
+              "ToolTip": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\BCrypt\\Data\\BCryptUtils.cs",
+              "RelativeToolTip": "BCrypt\\Data\\BCryptUtils.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T18:37:43.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BCryptArrays.cs",
+              "DocumentMoniker": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\BCrypt\\Data\\BCryptArrays.cs",
+              "RelativeDocumentMoniker": "BCrypt\\Data\\BCryptArrays.cs",
+              "ToolTip": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\BCrypt\\Data\\BCryptArrays.cs",
+              "RelativeToolTip": "BCrypt\\Data\\BCryptArrays.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T18:37:40.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.API\\Program.cs",
+              "RelativeDocumentMoniker": "OrderManagement.API\\Program.cs",
+              "ToolTip": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.API\\Program.cs",
+              "RelativeToolTip": "OrderManagement.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T05:55:41.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OrderManagement.Infrastructure",
+              "DocumentMoniker": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.Infrastructure\\OrderManagement.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "OrderManagement.Infrastructure\\OrderManagement.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.Infrastructure\\OrderManagement.Infrastructure.csproj",
+              "RelativeToolTip": "OrderManagement.Infrastructure\\OrderManagement.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-19T05:52:14.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OrderManagement.Domain",
+              "DocumentMoniker": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.Domain\\OrderManagement.Domain.csproj",
+              "RelativeDocumentMoniker": "OrderManagement.Domain\\OrderManagement.Domain.csproj",
+              "ToolTip": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.Domain\\OrderManagement.Domain.csproj",
+              "RelativeToolTip": "OrderManagement.Domain\\OrderManagement.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-19T03:21:24.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BCrypt.cs",
+              "DocumentMoniker": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\BCrypt\\BCrypt.cs",
+              "RelativeDocumentMoniker": "BCrypt\\BCrypt.cs",
+              "ToolTip": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\BCrypt\\BCrypt.cs",
+              "RelativeToolTip": "BCrypt\\BCrypt.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAIwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T03:20:06.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "OrderManagement.API\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "OrderManagement.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-18T06:24:47.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OrderManagement.API",
+              "DocumentMoniker": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.API\\OrderManagement.API.csproj",
+              "RelativeDocumentMoniker": "OrderManagement.API\\OrderManagement.API.csproj",
+              "ToolTip": "C:\\Users\\javie\\OneDrive\\Documentos\\Studies\\UEES\\3_2026\\systems_design\\final_project\\OrderManagement.API\\OrderManagement.API\\OrderManagement.API.csproj",
+              "RelativeToolTip": "OrderManagement.API\\OrderManagement.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-18T06:23:56.298Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
