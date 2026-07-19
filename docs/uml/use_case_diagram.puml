@@ -1,0 +1,34 @@
+@startuml
+title Order Management System - Use Case Diagram
+
+left to right direction
+
+actor Admin
+actor Customer
+
+rectangle "Order Management System" {
+
+  usecase "Login" as UC_Login
+  usecase "Create Category" as UC_CreateCategory
+  usecase "Create Product" as UC_CreateProduct
+  usecase "View Products" as UC_ViewProducts
+  usecase "Search Products" as UC_SearchProducts
+  usecase "Place Order" as UC_PlaceOrder
+  usecase "View Order History" as UC_OrderHistory
+}
+
+Admin --> UC_Login
+Admin --> UC_CreateCategory
+Admin --> UC_CreateProduct
+Admin --> UC_OrderHistory
+
+Customer --> UC_Login
+Customer --> UC_ViewProducts
+Customer --> UC_SearchProducts
+Customer --> UC_PlaceOrder
+Customer --> UC_OrderHistory
+
+UC_PlaceOrder .> UC_Login : <<include>>
+UC_SearchProducts .> UC_ViewProducts : <<extend>>
+
+@enduml

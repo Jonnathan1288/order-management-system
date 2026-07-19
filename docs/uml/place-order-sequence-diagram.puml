@@ -1,0 +1,17 @@
+@startuml
+title Place Order - Sequence Diagram
+
+actor Customer
+boundary "Web Application" as Web
+control "Order Controller" as OrderController
+database "Database" as DB
+
+Customer -> Web: Select products
+Customer -> Web: Confirm order
+Web -> OrderController: Create order
+OrderController -> DB: Save order
+DB --> OrderController: Order created
+OrderController --> Web: Order confirmation
+Web --> Customer: Show order number
+
+@enduml
