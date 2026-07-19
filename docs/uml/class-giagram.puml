@@ -1,0 +1,182 @@
+@startuml
+title Order Management System - Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam shadowing false
+skinparam packageStyle rectangle
+
+enum OrderStatus {
+  ACTIVE
+  CANCELLED
+  COMPLETED
+}
+
+enum CartStatus {
+  ACTIVE
+  CANCELLED
+  COMPLETED
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+}
+
+class Business {
+  - id: short
+  - code: string
+  - name: string
+  - description: string
+  - email: string
+  - address: string
+  - city: string
+  - country: string
+  - logoUrl: string
+  - template: string
+  - useTemplate: bool
+  - active: bool
+  - creationDate: DateTime
+  - updateDate: DateTime
+}
+
+class User {
+  - id: int
+  - businessId: short
+  - code: string
+  - role: Role
+  - email: string
+  - password: string
+  - active: bool
+  - creationDate: DateTime
+  - updateDate: DateTime
+}
+
+class Customer {
+  - id: int
+  - userId: int
+  - businessId: short
+  - code: string
+  - dni: string
+  - firstName: string
+  - lastName: string
+  - phone: string
+  - address: string
+  - active: bool
+  - creationDate: DateTime
+  - updateDate: DateTime
+}
+
+class Category {
+  - id: int
+  - parentId: int?
+  - businessId: short
+  - code: string
+  - name: string
+  - description: string
+  - imageUrl: string
+  - active: bool
+  - creationDate: DateTime
+  - updateDate: DateTime
+}
+
+class Product {
+  - id: int
+  - businessId: short
+  - categoryId: int
+  - code: string
+  - brand: string
+  - name: string
+  - description: string
+  - tax: decimal
+  - discount: decimal
+  - price: decimal
+  - stock: int
+  - imageUrl: string
+  - active: bool
+  - creationDate: DateTime
+  - updateDate: DateTime
+}
+
+class PaymentMethod {
+  - id: short
+  - businessId: short
+  - code: string
+  - name: string
+  - description: string
+  - active: bool
+  - creationDate: DateTime
+  - updateDate: DateTime
+}
+
+class ShoppingCart {
+  - id: int
+  - businessId: short
+  - customerId: int
+  - code: string
+  - payload: JsonDocument
+  - status: CartStatus
+  - active: bool
+  - creationDate: DateTime
+  - updateDate: DateTime
+}
+
+class Order {
+  - id: int
+  - businessId: short
+  - customerId: int
+  - paymentMethodId: short
+  - status: OrderStatus
+  - orderDate: DateTime
+  - total: decimal
+  - subTotal: decimal
+  - tax: decimal
+  - discount: decimal
+  - deliveryAddress: string
+  - notes: string
+  - active: bool
+  - creationDate: DateTime
+  - updateDate: DateTime
+}
+
+class OrderDetail {
+  - id: int
+  - orderId: int
+  - productId: int
+  - quantity: int
+  - unitPrice: decimal
+  - total: decimal
+  - subTotal: decimal
+  - tax: decimal
+  - discount: decimal
+  - active: bool
+  - creationDate: DateTime
+  - updateDate: DateTime
+}
+
+Business "1" -- "0..*" User
+Business "1" -- "0..*" Customer
+Business "1" -- "0..*" Category
+Business "1" -- "0..*" Product
+Business "1" -- "0..*" PaymentMethod
+Business "1" -- "0..*" ShoppingCart
+Business "1" -- "0..*" Order
+
+User "1" -- "0..1" Customer
+
+Category "0..1" -- "0..*" Category : parent / children
+Category "1" -- "0..*" Product
+
+Customer "1" -- "0..*" ShoppingCart
+Customer "1" -- "0..*" Order
+
+PaymentMethod "1" -- "0..*" Order
+
+Order "1" *-- "1..*" OrderDetail
+Product "1" -- "0..*" OrderDetail
+
+User ..> Role : uses
+ShoppingCart ..> CartStatus : uses
+Order ..> OrderStatus : uses
+
+@enduml
