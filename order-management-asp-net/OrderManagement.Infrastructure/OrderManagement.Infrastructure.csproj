@@ -7,20 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\OrderManagementDbContext.cs" Link="Connections\OrderManagementDbContext.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OrderManagement.Domain\OrderManagement.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Connections\" />
-    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>

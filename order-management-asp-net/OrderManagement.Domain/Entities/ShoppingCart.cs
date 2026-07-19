@@ -9,7 +9,7 @@ public partial class ShoppingCart
 
     public string Code { get; set; } = string.Empty;
 
-    public string Payload { get; set; } = string.Empty;
+    public Dictionary<string, object> Payload { get; set; } = [];
 
     /// <summary>
     /// ACTIVE

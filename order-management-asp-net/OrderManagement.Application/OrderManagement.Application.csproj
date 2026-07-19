@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BCrypt\BCrypt.csproj" />
+    <ProjectReference Include="..\OrderManagement.Domain\OrderManagement.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

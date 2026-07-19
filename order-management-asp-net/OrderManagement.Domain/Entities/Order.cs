@@ -1,4 +1,6 @@
-﻿namespace OrderManagement.Domain.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace OrderManagement.Domain.Entities;
 public partial class Order
 {
     public int Id { get; set; }
@@ -40,6 +42,7 @@ public partial class Order
 
     public virtual Customer? Customer { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = [];
 
     public virtual PaymentMethod? PaymentMethod { get; set; } 

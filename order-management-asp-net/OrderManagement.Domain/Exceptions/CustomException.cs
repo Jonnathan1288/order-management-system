@@ -13,8 +13,13 @@ public class CustomException(ExceptionEnum exceptionEnum) : Exception
         {
             return _exceptionEnum switch
             {
+                ExceptionEnum.ExpiredToken => "expired-token",
+                ExceptionEnum.UserDisabled => "user-disabled",
+                ExceptionEnum.UserNotFound => "user-not-found",
+                ExceptionEnum.WrongPassword => "wrong-password",
                 _ => _exceptionEnum.ToString(),
             };
         }
     }
 }
+

@@ -1,4 +1,6 @@
-﻿namespace OrderManagement.Domain.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace OrderManagement.Domain.Entities;
 
 public partial class PaymentMethod
 {
@@ -18,7 +20,8 @@ public partial class PaymentMethod
 
     public DateTime UpdateDate { get; set; }
 
-    public virtual Business? Business { get; set; } 
+    public virtual Business? Business { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Order> Orders { get; set; } = [];
 }

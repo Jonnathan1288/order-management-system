@@ -1,4 +1,6 @@
-﻿namespace OrderManagement.Domain.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace OrderManagement.Domain.Entities;
 
 public partial class Customer
 {
@@ -26,11 +28,14 @@ public partial class Customer
 
     public DateTime UpdateDate { get; set; }
 
-    public virtual Business? Business { get; set; } 
+    public virtual Business? Business { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Order> Orders { get; set; } = [];
 
+    [JsonIgnore]
     public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; } = [];
 
+    [JsonIgnore]
     public virtual User? User { get; set; } 
 }

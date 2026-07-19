@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using OrderManagement.Domain.Entities;
 using System.Text;
+using System.Text.Json;
 
 namespace OrderManagement.Infrastructure.Connections;
 
@@ -437,6 +438,9 @@ public partial class PostgreSQLContext : DbContext
             entity.Property(e => e.CreationDate).HasColumnName("creation_date");
             entity.Property(e => e.CustomerId).HasColumnName("customer_id");
             entity.Property(e => e.Payload)
+                .HasConversion(
+                    payload => JsonSerializer.Serialize(payload, (JsonSerializerOptions?)null),
+                    payload => JsonSerializer.Deserialize<Dictionary<string, object>>(payload, (JsonSerializerOptions?)null) ?? new Dictionary<string, object>())
                 .HasColumnType("jsonb")
                 .HasColumnName("payload");
             entity.Property(e => e.Status)
