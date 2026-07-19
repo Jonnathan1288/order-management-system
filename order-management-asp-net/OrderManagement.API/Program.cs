@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using OrderManagement.API.Extensions;
+using OrderManagement.API.Middlewares;
 using OrderManagement.Infrastructure.Connections;
 using System.Text;
 
@@ -72,12 +73,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("EnableCORS");
 
-app.UseStaticFiles();
+//app.UseStaticFiles();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.MapControllers();
-
 app.ConfigureExceptionMiddleware();
+
+app.UseMiddleware<TokenValidationMiddleware>();
+
+app.MapControllers();
 
 app.Run();

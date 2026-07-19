@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrderManagement.API.Attributes;
 using OrderManagement.API.Handlers;
 using OrderManagement.Application.DTOS;
 using OrderManagement.Application.Interfaces.Public;
@@ -10,6 +11,7 @@ namespace OrderManagement.API.Controllers.V1;
 public class AuthController(IUserService _service) : CommonController
 {
     [HttpPost("login")]
+    [SkipTokenValidation]
     public async Task<IActionResult> Login([FromBody] LoginRequestDTO loginRequestDto)
     {
         return Ok(ResponseHandler.Ok(await _service.SignInAsync(loginRequestDto)));

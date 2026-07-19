@@ -14,4 +14,13 @@ public class UserRepository(PostgreSQLContext _context) : IUserRepository
             .Include(u => u.Customers)
             .FirstOrDefaultAsync(u => u.BusinessId == businessId && u.Email.Equals(email));
     }
+
+    public Task<User?> FindByIdAsync(int id) 
+    {
+        return _context.Users
+            .AsNoTracking()
+            .Include(u => u.Customers)
+            .FirstOrDefaultAsync(u => u.Id == id);
+    }
+
 }

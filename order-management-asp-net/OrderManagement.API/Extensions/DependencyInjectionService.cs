@@ -11,6 +11,9 @@ public static class DependencyInjectionService
     // Services
     public static IServiceCollection AddAppServices(this IServiceCollection services)
     {
+        // Custom services
+        services.AddSingleton<IRequestContextService, RequestContextService>();
+
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IBusinessService, BusinessService>();
         services.AddScoped<IProductService, ProductService>();

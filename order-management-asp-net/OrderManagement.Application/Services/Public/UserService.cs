@@ -27,4 +27,11 @@ public class UserService(
             Token = _jwtService.GenerateToken(user, 3600),
         };
     }
+
+    public async Task<User> VerifyToken(string userToken)
+    {
+        int userId = _jwtService.GetUserId(userToken);
+        User user = await _repository.FindByIdAsync(userId) ?? throw new UnauthorizedException(ExceptionEnum.InvalidToken);
+        return user;
+    }
 }

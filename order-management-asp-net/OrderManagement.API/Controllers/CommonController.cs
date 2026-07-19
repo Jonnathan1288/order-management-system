@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
+using OrderManagement.Domain.Enums.Custom;
+using OrderManagement.Domain.Exceptions.Unauthorized;
 using System.Security.Claims;
 
 namespace OrderManagement.API.Controllers;
@@ -91,16 +92,12 @@ public class CommonController : ControllerBase
     {
         if (string.IsNullOrWhiteSpace(Token)) return null;
 
-        try
+        if (HttpContext.User.Identity?.IsAuthenticated != true)
         {
-            JwtSecurityTokenHandler handler = new();
-            JwtSecurityToken jwtToken = handler.ReadJwtToken(Token);
-            string? value = jwtToken.Claims.FirstOrDefault(claim => claim.Type == claimType)?.Value;
-            return string.IsNullOrWhiteSpace(value) ? null : value;
+            throw new UnauthorizedException(ExceptionEnum.InvalidToken);
         }
-        catch
-        {
-            return null;
-        }
+
+        string? value = HttpContext.User.Claims.FirstOrDefault(claim => claim.Type == claimType)?.Value;
+        return string.IsNullOrWhiteSpace(value) ? null : value;
     }
 }

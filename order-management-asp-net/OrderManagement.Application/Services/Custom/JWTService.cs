@@ -66,12 +66,11 @@ public class JWTService(IConfiguration configuration) : IJWTService
         }
     }
 
-    public long GetUserId(string token)
+    public int GetUserId(string token)
     {
-
         try
         {
-            _ = long.TryParse(GetClaims(token).FirstOrDefault(claim => claim.Type.Equals(ClaimTypes.Sid))?.Value, out long userId);
+            _ = int.TryParse(GetClaims(token).FirstOrDefault(claim => claim.Type.Equals(ClaimTypes.Sid))?.Value, out int userId);
             return userId;
         }
         catch
