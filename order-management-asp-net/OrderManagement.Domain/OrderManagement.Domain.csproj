@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\Business.cs" Link="Entities\Business.cs" />
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\Category.cs" Link="Entities\Category.cs" />
     <Compile Include="..\..\..\..\..\..\..\..\Desktop\dev\Models\OrderManagement\Customer.cs" Link="Entities\Customer.cs" />
@@ -19,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+=======
+>>>>>>> 6f77bc9a1602b8675287c6e6b0c14576060dc9bf
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
   </ItemGroup>

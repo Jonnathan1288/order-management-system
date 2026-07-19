@@ -3705,7 +3705,11 @@
 							"name": "role",
 							"documentation": "ADMIN\nCUSTOMER",
 							"type": "VARCHAR",
+<<<<<<< HEAD
 							"length": "20"
+=======
+							"length": "25"
+>>>>>>> 6f77bc9a1602b8675287c6e6b0c14576060dc9bf
 						},
 						{
 							"_type": "ERDColumn",
