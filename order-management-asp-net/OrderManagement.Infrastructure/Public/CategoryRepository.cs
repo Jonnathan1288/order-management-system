@@ -7,6 +7,13 @@ namespace OrderManagement.Infrastructure.Public;
 
 public class CategoryRepository(PostgreSQLContext _context) : ICategoryRepository
 {
+    public async Task<Category> CreateAsync(Category category)
+    {
+        _context.Categories.Add(category);
+        await _context.SaveChangesAsync();
+        return category;
+    }
+
     public Task<List<Category>> FindByBusinessAsync(short businessId)
     {
         return _context.Categories

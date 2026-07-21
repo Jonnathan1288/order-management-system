@@ -42,7 +42,6 @@ public partial class Order
 
     public virtual Customer? Customer { get; set; }
 
-    [JsonIgnore]
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = [];
 
     public virtual PaymentMethod? PaymentMethod { get; set; } 

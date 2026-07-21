@@ -7,6 +7,13 @@ namespace OrderManagement.Infrastructure.Public;
 
 public class ProductRepository(PostgreSQLContext _context) : IProductRepository
 {
+    public async Task<Product> CreateAsync(Product product)
+    {
+        _context.Products.Add(product);
+        await _context.SaveChangesAsync();
+        return product;
+    }
+
     public Task<List<Product>> FindByBusinessAsync(short businessId)
     {
         return _context.Products

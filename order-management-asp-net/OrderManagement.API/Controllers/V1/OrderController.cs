@@ -5,7 +5,7 @@ using OrderManagement.Domain.Entities;
 
 namespace OrderManagement.API.Controllers.V1;
 
-[Route("api/v1/orders")]
+[Route("api/v1/order")]
 [ApiController]
 public class OrderController(IOrderService _service) : CommonController
 {

@@ -6,6 +6,12 @@ namespace OrderManagement.Application.Services.Public;
 
 public class CategoryService(ICategoryRepository _repository) : ICategoryService
 {
+    public Task<Category> CreateAsync(short businessId, Category category)
+    {
+        category.BusinessId = businessId;
+        return _repository.CreateAsync(category);
+    }
+
     public Task<List<Category>> GetByBusinessAsync(short businessId)
     {
         return _repository.FindByBusinessAsync(businessId);

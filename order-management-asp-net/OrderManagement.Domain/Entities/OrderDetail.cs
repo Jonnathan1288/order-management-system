@@ -1,4 +1,6 @@
-﻿namespace OrderManagement.Domain.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace OrderManagement.Domain.Entities;
 public partial class OrderDetail
 {
     public int Id { get; set; }
@@ -25,6 +27,7 @@ public partial class OrderDetail
 
     public DateTime UpdateDate { get; set; }
 
+    [JsonIgnore]
     public virtual Order? Order { get; set; }
 
     public virtual Product? Product { get; set; }

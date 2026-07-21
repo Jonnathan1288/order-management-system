@@ -35,6 +35,8 @@ public class TokenValidationMiddleware(RequestDelegate _next)
 
         context.Request.Headers.Append("X-User-Code", user.Code);
         context.Request.Headers.Append("X-User-Id", user.Id.ToString());
+        context.Request.Headers.Append("X-Business-Id", user.BusinessId.ToString());
+        context.Request.Headers.Append("X-Customer-Id", user.Customers.FirstOrDefault()?.Id.ToString() ?? string.Empty);
 
         List<Claim> claims =
         [

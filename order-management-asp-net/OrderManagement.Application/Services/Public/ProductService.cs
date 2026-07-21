@@ -6,6 +6,12 @@ namespace OrderManagement.Application.Services.Public;
 
 public class ProductService(IProductRepository _repository) : IProductService
 {
+    public Task<Product> CreateAsync(short businessId, Product product)
+    {
+        product.BusinessId = businessId;
+        return _repository.CreateAsync(product);
+    }
+
     public Task<List<Product>> GetByBusinessAsync(short businessId)
     {
         return _repository.FindByBusinessAsync(businessId);

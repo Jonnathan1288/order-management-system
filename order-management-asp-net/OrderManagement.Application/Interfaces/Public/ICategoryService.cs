@@ -4,6 +4,8 @@ namespace OrderManagement.Application.Interfaces.Public;
 
 public interface ICategoryService
 {
+    Task<Category> CreateAsync(short businessId, Category category);
+
     Task<List<Category>> GetByBusinessAsync(short businessId);
 
     Task<List<Category>> GetByParentAsync(short businessId, int? parentId);

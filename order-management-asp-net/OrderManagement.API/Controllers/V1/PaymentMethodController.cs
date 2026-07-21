@@ -4,7 +4,7 @@ using OrderManagement.Application.Interfaces.Public;
 
 namespace OrderManagement.API.Controllers.V1;
 
-[Route("api/v1/payment-methods")]
+[Route("api/v1/payment-method")]
 [ApiController]
 public class PaymentMethodController(IPaymentMethodService _service) : CommonController
 {

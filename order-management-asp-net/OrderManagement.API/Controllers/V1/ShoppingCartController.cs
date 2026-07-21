@@ -5,7 +5,7 @@ using OrderManagement.Domain.Entities;
 
 namespace OrderManagement.API.Controllers.V1;
 
-[Route("api/v1/shopping-carts")]
+[Route("api/v1/shopping-cart")]
 [ApiController]
 public class ShoppingCartController(IShoppingCartService _service) : CommonController
 {

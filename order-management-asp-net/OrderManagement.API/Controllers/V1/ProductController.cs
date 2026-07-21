@@ -2,13 +2,20 @@ using Microsoft.AspNetCore.Mvc;
 using OrderManagement.API.Attributes;
 using OrderManagement.API.Handlers;
 using OrderManagement.Application.Interfaces.Public;
+using OrderManagement.Domain.Entities;
 
 namespace OrderManagement.API.Controllers.V1;
 
-[Route("api/v1/products")]
+[Route("api/v1/product")]
 [ApiController]
 public class ProductController(IProductService _service) : CommonController
 {
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] Product product)
+    {
+        return Ok(ResponseHandler.Ok(await _service.CreateAsync(BusinessId, product)));
+    }
+
     [HttpGet]
     [SkipTokenValidation]
     public async Task<IActionResult> GetByBusiness()
