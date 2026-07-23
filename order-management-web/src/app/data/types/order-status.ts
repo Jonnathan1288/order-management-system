@@ -1,0 +1,1 @@
+export type OrderStatus = 'ACTIVE' | 'CANCELLED' | 'COMPLETED' | string;
