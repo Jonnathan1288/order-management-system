@@ -1,0 +1,13 @@
+@if(canUseCart()){
+<a routerLink="/cart"
+    class="fixed bottom-6 right-6 z-30 inline-flex h-14 min-w-14 items-center justify-center gap-2 rounded-full bg-slate-950 px-5 text-sm font-semibold text-white shadow-xl shadow-slate-900/25 transition hover:bg-slate-800"
+    aria-label="Abrir carrito">
+    <iconify-icon icon="material-symbols:shopping-cart-outline-rounded" class="text-xl"></iconify-icon>
+    <span>Carrito</span>
+    @if(cart.totalItems() > 0){
+    <span class="rounded-full bg-white px-2 py-0.5 text-xs font-bold text-slate-950">
+        {{ cart.totalItems() }}
+    </span>
+    }
+</a>
+}

@@ -5,12 +5,26 @@ import { environment } from '../../../environments/environment';
 import { Order } from '../entities';
 import { ApiResponse } from './api-response';
 
+export interface CreateOrderRequest {
+  paymentMethodId: number;
+  date: string;
+  total: number;
+  deliveryAddress: string;
+  notes: string | null;
+  orderDetails: CreateOrderDetailRequest[];
+}
+
+export interface CreateOrderDetailRequest {
+  productId: number;
+  quantity: number;
+}
+
 @Injectable({ providedIn: 'root' })
 export class OrderApiService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = environment.API_URL;
 
-  create(order: Order): Observable<Order> {
+  create(order: CreateOrderRequest): Observable<Order> {
     return this.http
       .post<ApiResponse<Order>>(`${this.apiUrl}/order`, order)
       .pipe(map((response) => response.data));

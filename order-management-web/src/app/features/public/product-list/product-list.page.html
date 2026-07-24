@@ -1,0 +1,95 @@
+<main>
+    <section class="w-full px-5 py-8 lg:px-10">
+        @if(error()){
+        <div class="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+            {{ error() }}
+        </div>
+        }
+
+        <section class="space-y-5">
+            <div class="grid gap-4 lg:grid-cols-[1fr_28rem] lg:items-end">
+                <div>
+                    <h2 class="text-2xl font-semibold">Productos</h2>
+                    <p class="text-sm text-slate-500">{{ selectedCategoryName() }}</p>
+                </div>
+
+                <label class="relative block">
+                    <span class="sr-only">Buscar producto</span>
+                    <input
+                        class="w-full rounded-md border border-slate-300 bg-white px-4 py-3 pl-11 text-sm outline-none transition focus:border-slate-950"
+                        type="search" [ngModel]="productSearch()" (ngModelChange)="productSearch.set($event)"
+                        placeholder="Buscar producto, marca o categoria..." />
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                        <iconify-icon icon="material-symbols:search-rounded"></iconify-icon>
+                    </span>
+                </label>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <p class="text-sm text-slate-500">
+                    {{ shownProducts().length }} producto{{ shownProducts().length === 1 ? '' : 's' }}
+                </p>
+                @if(selectedCategoryId()){
+                <button class="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium hover:bg-white"
+                    type="button" (click)="clearCategory()">
+                    Ver todos
+                </button>
+                }
+
+            </div>
+
+            @if(loading()){
+            <div class="rounded-md border border-slate-200 bg-white p-6 text-slate-500">
+                Cargando productos...
+            </div>
+            }
+
+            @if(!loading() && shownProducts().length){
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                @for(product of shownProducts(); track product.id){
+                <article class="overflow-hidden rounded-md border border-slate-200 bg-white">
+                    <div class="aspect-4/3 bg-slate-100">
+                        <img *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.name"
+                            class="h-full w-full object-cover" />
+                    </div>
+                    <div class="space-y-3 p-5">
+                        <div>
+                            <p class="text-xs font-semibold uppercase text-slate-500">{{ product.brand || 'Producto' }}
+                            </p>
+                            <h3 class="mt-1 text-lg font-semibold">{{ product.name }}</h3>
+                        </div>
+                        <p class="line-clamp-3 text-sm text-slate-600">{{ product.description }}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xl font-bold">{{ product.price | currency }}</span>
+                            <span class="rounded-md bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700">
+                                Stock {{ product.stock }}
+                            </span>
+                        </div>
+
+                        @if(canAddToCart()){
+                        <button type="button"
+                            class="w-full rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+                            [disabled]="product.stock <= 0" (click)="addToCart(product)">
+                            {{ product.stock > 0 ? 'Añadir al carrito' : 'Sin stock' }}
+                        </button>
+                        }
+                    </div>
+                </article>
+                }
+            </div>
+            }
+
+            @if(!loading() && !shownProducts().length){
+            <div class="rounded-md border border-slate-200 bg-white p-8 text-center">
+                <h3 class="text-lg font-semibold">
+                    {{ productSearch() ? 'No encontramos productos' : 'No hay productos disponibles' }}
+                </h3>
+                <p class="mt-2 text-sm text-slate-500">
+                    {{ productSearch() ? 'Prueba con otra de busqueda.' : 'Cuando existan productos apareceran aqui.'
+                    }}
+                </p>
+            </div>
+            }
+        </section>
+    </section>
+</main>

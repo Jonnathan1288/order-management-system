@@ -1,17 +1,17 @@
 @startuml
-title Place Order - Sequence Diagram
+title Realizar pedido - Diagrama de Secuencia
 
-actor Customer
-boundary "Web Application" as Web
-control "Order Controller" as OrderController
-database "Database" as DB
+actor Cliente
+boundary "Aplicación Web" as Web
+control "Controlador de Pedidos" as ControladorPedido
+database "Base de Datos" as BD
 
-Customer -> Web: Select products
-Customer -> Web: Confirm order
-Web -> OrderController: Create order
-OrderController -> DB: Save order
-DB --> OrderController: Order created
-OrderController --> Web: Order confirmation
-Web --> Customer: Show order number
+Cliente -> Web: Seleccionar productos
+Cliente -> Web: Confirmar pedido
+Web -> ControladorPedido: Crear pedido
+ControladorPedido -> BD: Guardar pedido
+BD --> ControladorPedido: Pedido creado
+ControladorPedido --> Web: Confirmación del pedido
+Web --> Cliente: Mostrar número del pedido
 
 @enduml

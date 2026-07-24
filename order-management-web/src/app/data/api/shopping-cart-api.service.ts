@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { OrderStatus } from '../../shared/types/order-status';
 import { ShoppingCart } from '../entities';
-import { OrderStatus } from '../types/order-status';
 import { ApiResponse } from './api-response';
 
 @Injectable({ providedIn: 'root' })

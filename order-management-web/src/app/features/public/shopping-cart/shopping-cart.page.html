@@ -1,0 +1,192 @@
+<main>
+    <section class="w-full space-y-6 px-5 py-8 lg:px-10">
+        <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+                <p class="text-sm font-semibold uppercase tracking-wide text-emerald-700">Compra</p>
+                <h1 class="mt-1 text-2xl font-semibold">Carrito</h1>
+            </div>
+            <a routerLink="/products"
+                class="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium hover:bg-white">
+                Seguir comprando
+            </a>
+        </div>
+
+        @if(orderSuccess()){
+        <div class="rounded-md border border-emerald-200 bg-emerald-50 p-4 text-sm font-medium text-emerald-700">
+            {{ orderSuccess() }}
+        </div>
+        }
+
+        @if(orderError() && !confirmModalOpen()){
+        <div class="rounded-md border border-red-200 bg-red-50 p-4 text-sm font-medium text-red-700">
+            {{ orderError() }}
+        </div>
+        }
+
+        @if(cart.items().length){
+        <div class="grid gap-6 lg:grid-cols-[1fr_22rem]">
+            <section class="space-y-4">
+                @for(item of cart.items(); track item.product.id){
+                <article
+                    class="grid gap-4 rounded-md border border-slate-200 bg-white p-4 md:grid-cols-[7rem_1fr_auto]">
+                    <div class="aspect-square overflow-hidden rounded-md bg-slate-100">
+                        @if(item.product.imageUrl){
+                        <img [src]="item.product.imageUrl" [alt]="item.product.name" class="h-full w-full object-cover" />
+                        }
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-semibold uppercase text-slate-500">{{ item.product.brand || 'Producto' }}
+                        </p>
+                        <h2 class="mt-1 text-lg font-semibold">{{ item.product.name }}</h2>
+                        <p class="mt-2 text-sm text-slate-500">{{ item.product.description }}</p>
+                        <button type="button" class="mt-3 text-sm font-medium text-red-700 hover:text-red-900"
+                            (click)="cart.remove(item.product.id)">
+                            Quitar
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-3 md:flex-col md:items-end">
+                        <div class="flex items-center overflow-hidden rounded-md border border-slate-300">
+                            <button type="button" class="px-3 py-2 text-sm font-semibold hover:bg-slate-50"
+                                (click)="cart.updateQuantity(item.product.id, item.quantity - 1)">
+                                -
+                            </button>
+                            <span class="min-w-10 px-3 py-2 text-center text-sm font-semibold">{{ item.quantity
+                                }}</span>
+                            <button type="button" class="px-3 py-2 text-sm font-semibold hover:bg-slate-50"
+                                (click)="cart.updateQuantity(item.product.id, item.quantity + 1)">
+                                +
+                            </button>
+                        </div>
+                        <p class="text-lg font-bold">{{ cart.unitPrice(item.product) * item.quantity | currency }}</p>
+                    </div>
+                </article>
+                }
+            </section>
+
+            <aside class="h-fit rounded-md border border-slate-200 bg-white p-5">
+                <h2 class="text-lg font-semibold">Resumen</h2>
+                <div class="mt-5 space-y-3 text-sm">
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Items</span>
+                        <span class="font-medium">{{ cart.totalItems() }}</span>
+                    </div>
+                    <div class="flex justify-between border-t border-slate-100 pt-3 text-base">
+                        <span class="font-semibold">Total</span>
+                        <span class="font-bold">{{ cart.total() | currency }}</span>
+                    </div>
+                </div>
+
+                @if(isAuthenticated()){
+                <label class="mt-5 block">
+                    <span class="text-sm font-semibold text-slate-700">Metodo de pago</span>
+                    <select
+                        class="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-950 disabled:cursor-not-allowed disabled:bg-slate-100"
+                        [ngModel]="selectedPaymentMethodId()"
+                        (ngModelChange)="selectedPaymentMethodId.set($event)"
+                        [disabled]="loadingPaymentMethods() || !paymentMethods().length"
+                    >
+                        <option [ngValue]="null">
+                            {{ loadingPaymentMethods() ? 'Cargando metodos...' : 'Selecciona un metodo' }}
+                        </option>
+                        @for(method of paymentMethods(); track method.id){
+                        <option [ngValue]="method.id">
+                            {{ method.name }}
+                        </option>
+                        }
+                    </select>
+                </label>
+                }
+
+                <button type="button"
+                    class="mt-5 w-full rounded-md bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+                    [disabled]="loadingPaymentMethods() || isAuthenticated() && !selectedPaymentMethodId()"
+                    (click)="handleCheckout()">
+                    {{ isAuthenticated() ? 'Confirmar compra' : 'Iniciar sesion para comprar' }}
+                </button>
+                <button type="button"
+                    class="mt-3 w-full rounded-md border border-slate-300 px-4 py-2.5 text-sm font-semibold hover:bg-slate-50"
+                    (click)="cart.clear()">
+                    Vaciar carrito
+                </button>
+            </aside>
+        </div>
+        } @else {
+        <div class="rounded-md border border-slate-200 bg-white p-8 text-center">
+            <h2 class="text-xl font-semibold">Tu carrito esta vacio</h2>
+            <p class="mt-2 text-sm text-slate-500">Agrega productos desde el catalogo.</p>
+            <a routerLink="/products"
+                class="mt-5 inline-flex rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+                Ver productos
+            </a>
+        </div>
+        }
+    </section>
+
+    @if(confirmModalOpen()){
+    <div
+        class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 px-5 backdrop-blur-sm" role="dialog"
+        aria-modal="true">
+        <section class="w-full max-w-md rounded-md bg-white p-6 shadow-2xl">
+            <div class="flex items-start gap-4">
+                <span
+                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                    <iconify-icon icon="solar:cart-check-bold" width="24" height="24"></iconify-icon>
+                </span>
+                <div>
+                    <h2 class="text-xl font-semibold">Confirmar compra</h2>
+                    <p class="mt-2 text-sm leading-6 text-slate-500">
+                        Vas a confirmar {{ cart.totalItems() }} producto(s) por un total de
+                        <span class="font-semibold text-slate-900">{{ cart.total() | currency }}</span>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-5 space-y-4">
+                <label class="block">
+                    <span class="text-sm font-semibold text-slate-700">Direccion de entrega</span>
+                    <input
+                        class="mt-2 w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-950"
+                        type="text"
+                        [ngModel]="deliveryAddress()"
+                        (ngModelChange)="deliveryAddress.set($event)"
+                        placeholder="Ej. Tarqui"
+                    />
+                </label>
+
+                <label class="block">
+                    <span class="text-sm font-semibold text-slate-700">Notas</span>
+                    <textarea
+                        class="mt-2 min-h-24 w-full rounded-md border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-950"
+                        [ngModel]="notes()"
+                        (ngModelChange)="notes.set($event)"
+                        placeholder="Ej. Referencia, instrucciones o comentario"
+                    ></textarea>
+                </label>
+
+                @if(orderError()){
+                <p class="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                    {{ orderError() }}
+                </p>
+                }
+            </div>
+
+            <div class="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+                <button type="button"
+                    class="rounded-md border border-slate-300 px-4 py-2.5 text-sm font-semibold hover:bg-slate-50"
+                    [disabled]="creatingOrder()"
+                    (click)="closeConfirmModal()">
+                    Cancelar
+                </button>
+                <button type="button"
+                    class="rounded-md bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-800 disabled:cursor-not-allowed disabled:bg-emerald-400"
+                    [disabled]="creatingOrder()"
+                    (click)="confirmPurchase()">
+                    {{ creatingOrder() ? 'Confirmando...' : 'Confirmar' }}
+                </button>
+            </div>
+        </section>
+    </div>
+    }
+</main>

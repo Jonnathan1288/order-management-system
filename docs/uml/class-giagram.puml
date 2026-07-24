@@ -1,182 +1,182 @@
 @startuml
-title Order Management System - Class Diagram
+title Sistema de Gestión de Pedidos - Diagrama de Clases
 
 skinparam classAttributeIconSize 0
 skinparam linetype ortho
 skinparam shadowing false
 skinparam packageStyle rectangle
 
-enum OrderStatus {
-  ACTIVE
-  CANCELLED
-  COMPLETED
+enum EstadoPedido {
+  ACTIVO
+  CANCELADO
+  COMPLETADO
 }
 
-enum CartStatus {
-  ACTIVE
-  CANCELLED
-  COMPLETED
+enum EstadoCarrito {
+  ACTIVO
+  CANCELADO
+  COMPLETADO
 }
 
-enum Role {
-  ADMIN
-  CUSTOMER
+enum Rol {
+  ADMINISTRADOR
+  CLIENTE
 }
 
-class Business {
+class Empresa {
   - id: short
-  - code: string
-  - name: string
-  - description: string
-  - email: string
-  - address: string
-  - city: string
-  - country: string
-  - logoUrl: string
-  - template: string
-  - useTemplate: bool
-  - active: bool
-  - creationDate: DateTime
-  - updateDate: DateTime
+  - codigo: string
+  - nombre: string
+  - descripcion: string
+  - correo: string
+  - direccion: string
+  - ciudad: string
+  - pais: string
+  - urlLogo: string
+  - plantilla: string
+  - usarPlantilla: bool
+  - activo: bool
+  - fechaCreacion: DateTime
+  - fechaActualizacion: DateTime
 }
 
-class User {
+class Usuario {
   - id: int
-  - businessId: short
-  - code: string
-  - role: Role
-  - email: string
-  - password: string
-  - active: bool
-  - creationDate: DateTime
-  - updateDate: DateTime
+  - empresaId: short
+  - codigo: string
+  - rol: Rol
+  - correo: string
+  - contrasena: string
+  - activo: bool
+  - fechaCreacion: DateTime
+  - fechaActualizacion: DateTime
 }
 
-class Customer {
+class Cliente {
   - id: int
-  - userId: int
-  - businessId: short
-  - code: string
-  - dni: string
-  - firstName: string
-  - lastName: string
-  - phone: string
-  - address: string
-  - active: bool
-  - creationDate: DateTime
-  - updateDate: DateTime
+  - usuarioId: int
+  - empresaId: short
+  - codigo: string
+  - cedula: string
+  - nombres: string
+  - apellidos: string
+  - telefono: string
+  - direccion: string
+  - activo: bool
+  - fechaCreacion: DateTime
+  - fechaActualizacion: DateTime
 }
 
-class Category {
+class Categoria {
   - id: int
-  - parentId: int?
-  - businessId: short
-  - code: string
-  - name: string
-  - description: string
-  - imageUrl: string
-  - active: bool
-  - creationDate: DateTime
-  - updateDate: DateTime
+  - categoriaPadreId: int?
+  - empresaId: short
+  - codigo: string
+  - nombre: string
+  - descripcion: string
+  - urlImagen: string
+  - activo: bool
+  - fechaCreacion: DateTime
+  - fechaActualizacion: DateTime
 }
 
-class Product {
+class Producto {
   - id: int
-  - businessId: short
-  - categoryId: int
-  - code: string
-  - brand: string
-  - name: string
-  - description: string
-  - tax: decimal
-  - discount: decimal
-  - price: decimal
+  - empresaId: short
+  - categoriaId: int
+  - codigo: string
+  - marca: string
+  - nombre: string
+  - descripcion: string
+  - impuesto: decimal
+  - descuento: decimal
+  - precio: decimal
   - stock: int
-  - imageUrl: string
-  - active: bool
-  - creationDate: DateTime
-  - updateDate: DateTime
+  - urlImagen: string
+  - activo: bool
+  - fechaCreacion: DateTime
+  - fechaActualizacion: DateTime
 }
 
-class PaymentMethod {
+class MetodoPago {
   - id: short
-  - businessId: short
-  - code: string
-  - name: string
-  - description: string
-  - active: bool
-  - creationDate: DateTime
-  - updateDate: DateTime
+  - empresaId: short
+  - codigo: string
+  - nombre: string
+  - descripcion: string
+  - activo: bool
+  - fechaCreacion: DateTime
+  - fechaActualizacion: DateTime
 }
 
-class ShoppingCart {
+class CarritoCompras {
   - id: int
-  - businessId: short
-  - customerId: int
-  - code: string
-  - payload: JsonDocument
-  - status: CartStatus
-  - active: bool
-  - creationDate: DateTime
-  - updateDate: DateTime
+  - empresaId: short
+  - clienteId: int
+  - codigo: string
+  - datos: JsonDocument
+  - estado: EstadoCarrito
+  - activo: bool
+  - fechaCreacion: DateTime
+  - fechaActualizacion: DateTime
 }
 
-class Order {
+class Pedido {
   - id: int
-  - businessId: short
-  - customerId: int
-  - paymentMethodId: short
-  - status: OrderStatus
-  - orderDate: DateTime
+  - empresaId: short
+  - clienteId: int
+  - metodoPagoId: short
+  - estado: EstadoPedido
+  - fechaPedido: DateTime
   - total: decimal
-  - subTotal: decimal
-  - tax: decimal
-  - discount: decimal
-  - deliveryAddress: string
-  - notes: string
-  - active: bool
-  - creationDate: DateTime
-  - updateDate: DateTime
+  - subtotal: decimal
+  - impuesto: decimal
+  - descuento: decimal
+  - direccionEntrega: string
+  - notas: string
+  - activo: bool
+  - fechaCreacion: DateTime
+  - fechaActualizacion: DateTime
 }
 
-class OrderDetail {
+class DetallePedido {
   - id: int
-  - orderId: int
-  - productId: int
-  - quantity: int
-  - unitPrice: decimal
+  - pedidoId: int
+  - productoId: int
+  - cantidad: int
+  - precioUnitario: decimal
   - total: decimal
-  - subTotal: decimal
-  - tax: decimal
-  - discount: decimal
-  - active: bool
-  - creationDate: DateTime
-  - updateDate: DateTime
+  - subtotal: decimal
+  - impuesto: decimal
+  - descuento: decimal
+  - activo: bool
+  - fechaCreacion: DateTime
+  - fechaActualizacion: DateTime
 }
 
-Business "1" -- "0..*" User
-Business "1" -- "0..*" Customer
-Business "1" -- "0..*" Category
-Business "1" -- "0..*" Product
-Business "1" -- "0..*" PaymentMethod
-Business "1" -- "0..*" ShoppingCart
-Business "1" -- "0..*" Order
+Empresa "1" -- "0..*" Usuario
+Empresa "1" -- "0..*" Cliente
+Empresa "1" -- "0..*" Categoria
+Empresa "1" -- "0..*" Producto
+Empresa "1" -- "0..*" MetodoPago
+Empresa "1" -- "0..*" CarritoCompras
+Empresa "1" -- "0..*" Pedido
 
-User "1" -- "0..1" Customer
+Usuario "1" -- "0..1" Cliente
 
-Category "0..1" -- "0..*" Category : parent / children
-Category "1" -- "0..*" Product
+Categoria "0..1" -- "0..*" Categoria : padre / subcategorías
+Categoria "1" -- "0..*" Producto
 
-Customer "1" -- "0..*" ShoppingCart
-Customer "1" -- "0..*" Order
+Cliente "1" -- "0..*" CarritoCompras
+Cliente "1" -- "0..*" Pedido
 
-PaymentMethod "1" -- "0..*" Order
+MetodoPago "1" -- "0..*" Pedido
 
-Order "1" *-- "1..*" OrderDetail
-Product "1" -- "0..*" OrderDetail
+Pedido "1" *-- "1..*" DetallePedido
+Producto "1" -- "0..*" DetallePedido
 
-User ..> Role : uses
-ShoppingCart ..> CartStatus : uses
-Order ..> OrderStatus : uses
+Usuario ..> Rol : utiliza
+CarritoCompras ..> EstadoCarrito : utiliza
+Pedido ..> EstadoPedido : utiliza
 
 @enduml

@@ -1,22 +1,22 @@
 @startuml
-title Login - Sequence Diagram
+title Inicio de sesión - Diagrama de Secuencia
 
-actor User
-boundary "Web Application" as Web
-control "Auth Controller" as Auth
-database "Database" as DB
+actor Usuario
+boundary "Aplicación Web" as Web
+control "Controlador de Autenticación" as Auth
+database "Base de Datos" as BD
 
-User -> Web: Enter email and password
-Web -> Auth: Login credentials
-Auth -> DB: Find user by email
-DB --> Auth: User information
+Usuario -> Web: Ingresar correo y contraseña
+Web -> Auth: Enviar credenciales de acceso
+Auth -> BD: Buscar usuario por correo
+BD --> Auth: Información del usuario
 
-alt Valid credentials
-  Auth --> Web: Login successful
-  Web --> User: Show home page
-else Invalid credentials
-  Auth --> Web: Login failed
-  Web --> User: Show error message
+alt Credenciales válidas
+  Auth --> Web: Inicio de sesión exitoso
+  Web --> Usuario: Mostrar página principal
+else Credenciales inválidas
+  Auth --> Web: Inicio de sesión fallido
+  Web --> Usuario: Mostrar mensaje de error
 end
 
 @enduml
