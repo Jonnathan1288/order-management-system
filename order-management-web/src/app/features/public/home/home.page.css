@@ -1,0 +1,3 @@
+.business-template :where(img, video, iframe) {
+  max-width: 100%;
+}

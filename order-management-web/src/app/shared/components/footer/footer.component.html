@@ -1,0 +1,14 @@
+<footer class="border-t border-slate-200 bg-white">
+    <div class="grid w-full gap-5 px-5 py-8 md:grid-cols-[1fr_auto] md:items-center lg:px-10">
+        <div>
+            <p class="font-semibold">{{ business()?.name || 'Administrador de pedidos' }}</p>
+            <p class="mt-1 text-sm text-slate-500">
+                {{ business()?.description || 'Gestion de pedidos, productos y categorias.' }}
+            </p>
+        </div>
+        <div class="text-sm text-slate-500 md:text-right">
+            <p>{{ business()?.email }}</p>
+            <p>{{ business()?.address }}</p>
+        </div>
+    </div>
+</footer>

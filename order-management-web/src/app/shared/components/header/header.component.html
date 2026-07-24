@@ -1,0 +1,63 @@
+<header class="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <div class="flex w-full flex-col gap-4 px-5 py-4 md:flex-row md:items-center md:justify-between lg:px-10">
+        <a routerLink="/home" class="flex items-center gap-3 text-left">
+            @if(business()?.logoUrl){
+            <img [src]="business()?.logoUrl" [alt]="business()?.name"
+                class="h-11 w-11 rounded-md object-cover ring-1 ring-slate-200" />
+            }
+
+            <span>
+                <span class="block text-lg font-semibold">{{ business()?.name || 'Order Management' }}</span>
+                <span class="block text-sm text-slate-500">{{ business()?.city || 'Catalogo online' }}</span>
+            </span>
+        </a>
+
+        <nav class="flex flex-wrap items-center gap-2">
+            <a routerLink="/home" routerLinkActive="nav-button-active" class="nav-button">
+                <iconify-icon icon="material-symbols:home-outline-rounded" class="nav-icon"></iconify-icon>
+                Inicio
+            </a>
+            <a routerLink="/products" routerLinkActive="nav-button-active" class="nav-button">
+                <iconify-icon icon="material-symbols:inventory-2-outline-rounded" class="nav-icon"></iconify-icon>
+                Productos
+            </a>
+            <a routerLink="/categories" routerLinkActive="nav-button-active" class="nav-button">
+                <iconify-icon icon="material-symbols:category-outline-rounded" class="nav-icon"></iconify-icon>
+                Categorias
+            </a>
+
+            @if(isCustomer()){
+            <a routerLink="/customer/orders"
+                class="inline-flex items-center gap-1.5 rounded-md border border-slate-300 px-4 py-2 text-sm font-medium hover:bg-slate-50">
+                <iconify-icon icon="material-symbols:receipt-long-outline-rounded" class="nav-icon"></iconify-icon>
+                Mis pedidos
+            </a>
+            }
+
+            @if(isAdmin()){
+            <a routerLink="/admin"
+                class="inline-flex items-center gap-1.5 rounded-md border border-slate-300 px-4 py-2 text-sm font-medium hover:bg-slate-50">
+                <iconify-icon icon="material-symbols:admin-panel-settings-outline-rounded"
+                    class="nav-icon"></iconify-icon>
+                Admin
+            </a>
+            }
+
+            @if(!isAuthenticated()){
+            <a routerLink="/sign-in"
+                class="inline-flex items-center gap-1.5 rounded-md bg-slate-950 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
+                <iconify-icon icon="material-symbols:login-rounded" class="nav-icon"></iconify-icon>
+                Iniciar sesion
+            </a>
+            }
+
+            @if(isAuthenticated()){
+            <button type="button"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-white shadow-sm transition hover:bg-slate-800"
+                (click)="signOut()" aria-label="Cerrar sesion" title="Cerrar sesion">
+                <iconify-icon icon="material-symbols:logout-rounded" class="text-xl"></iconify-icon>
+            </button>
+            }
+        </nav>
+    </div>
+</header>
