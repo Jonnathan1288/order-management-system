@@ -1,5 +1,5 @@
-import { OrderStatus } from "./types/order-status";
-import { UserRole } from "./types/role";
+import { OrderStatus } from "../shared/types/order-status";
+import { UserRole } from "../shared/types/role";
 
 export interface AuditableEntity {
     active: boolean;

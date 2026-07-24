@@ -17,6 +17,7 @@ export const apiInterceptor: HttpInterceptorFn = (request, next) => {
   if (claims.customerId) {
     headers['X-Customer-Id'] = claims.customerId;
   }
+  console.log(headers)
 
   return next(request.clone({ setHeaders: headers }));
 };
