@@ -26,7 +26,7 @@ public class ProductRepository(PostgreSQLContext _context) : IProductRepository
     {
         return _context.Products
             .AsNoTracking()
-            .Where(product => product.BusinessId == businessId && product.CategoryId == categoryId)
+            .Where(product => product.BusinessId == businessId && product.CategoryId == categoryId && product.Active)
             .ToListAsync();
     }
 
@@ -35,7 +35,7 @@ public class ProductRepository(PostgreSQLContext _context) : IProductRepository
         string value = search.ToLower();
         return _context.Products
             .AsNoTracking()
-            .Where(product => product.BusinessId == businessId
+            .Where(product => product.Active && product.BusinessId == businessId
                 && (product.Name.ToLower().Contains(value)
                     || product.Description.ToLower().Contains(value)
                     || product.Brand.ToLower().Contains(value)))

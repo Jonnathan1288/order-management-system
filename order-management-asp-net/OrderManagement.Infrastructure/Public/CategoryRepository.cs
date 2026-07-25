@@ -18,7 +18,7 @@ public class CategoryRepository(PostgreSQLContext _context) : ICategoryRepositor
     {
         return _context.Categories
             .AsNoTracking()
-            .Where(category => category.BusinessId == businessId)
+            .Where(category => category.BusinessId == businessId && category.Active)
             .ToListAsync();
     }
 
@@ -26,7 +26,7 @@ public class CategoryRepository(PostgreSQLContext _context) : ICategoryRepositor
     {
         return _context.Categories
             .AsNoTracking()
-            .Where(category => category.BusinessId == businessId && category.ParentId == parentId)
+            .Where(category => category.BusinessId == businessId && category.ParentId == parentId && category.Active)
             .ToListAsync();
     }
 }

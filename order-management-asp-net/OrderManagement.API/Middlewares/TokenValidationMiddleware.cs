@@ -40,9 +40,16 @@ public class TokenValidationMiddleware(RequestDelegate _next)
 
         List<Claim> claims =
         [
-            new Claim(ClaimTypes.Sid, user.Id.ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Code),
-            ];
+            new (ClaimTypes.Sid, user.Id.ToString()),
+            new (ClaimTypes.NameIdentifier, user.Code),
+            new (ClaimTypes.IsPersistent, "true"),
+            new Claim(ClaimTypes.Email, user.Email),
+            new("businessId", user.BusinessId.ToString()),
+            new Claim(
+                "customerId",
+                user.Customers.FirstOrDefault()?.Id.ToString() ?? string.Empty
+            )
+        ];
 
         var identity = new ClaimsIdentity(claims, "custom");
         context.User = new ClaimsPrincipal(identity);

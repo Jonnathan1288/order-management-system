@@ -35,6 +35,8 @@ export class ShoppingCartPage {
   readonly orderSuccess = signal('');
   readonly isAuthenticated = computed(() => this.session.isAuthenticated());
 
+  readonly orderCreated = signal<any>(null);
+
   ngOnInit(): void {
     if (this.isAuthenticated()) {
       this.loadPaymentMethods();
@@ -103,12 +105,13 @@ export class ShoppingCartPage {
       })
       .pipe(finalize(() => this.creatingOrder.set(false)))
       .subscribe({
-        next: () => {
+        next: (data) => {
           this.cart.clear();
           this.confirmModalOpen.set(false);
           this.deliveryAddress.set('');
           this.notes.set('');
           this.orderSuccess.set('Compra confirmada correctamente.');
+          this.orderCreated.set(data);
         },
         error: () => {
           this.orderError.set('No se pudo confirmar la compra. Intenta nuevamente.');
@@ -124,7 +127,6 @@ export class ShoppingCartPage {
       .subscribe({
         next: (paymentMethods) => {
           this.paymentMethods.set(paymentMethods ?? []);
-          // this.selectedPaymentMethodId.set(paymentMethods?.[0]?.id ?? null);
         },
         error: () => {
           this.paymentMethods.set([]);
