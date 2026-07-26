@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using OrderManagement.API.Constants;
 using OrderManagement.Domain.Enums.Custom;
 using OrderManagement.Domain.Exceptions.Unauthorized;
 using System.Security.Claims;
@@ -21,7 +22,7 @@ public class CommonController : ControllerBase
     {
         get
         {
-            return GetRequiredShortIdentifier("businessId", "X-Business-Id", "businessId");
+            return GetRequiredShortIdentifier("businessId", RequestHeaders.BusinessId, "businessId");
         }
     }
 
@@ -32,7 +33,7 @@ public class CommonController : ControllerBase
     {
         get
         {
-            return GetRequiredIntIdentifier("userId", "X-User-Id", ClaimTypes.Sid, "sid", "userId");
+            return GetRequiredIntIdentifier("userId", RequestHeaders.UserId, ClaimTypes.Sid, "sid", "userId");
         }
     }
 
@@ -43,7 +44,7 @@ public class CommonController : ControllerBase
     {
         get
         {
-            return GetRequiredIntIdentifier("customerId", "X-Customer-Id", "customerId");
+            return GetRequiredIntIdentifier("customerId", RequestHeaders.CustomerId, "customerId");
         }
     }
 
