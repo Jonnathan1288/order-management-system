@@ -1,10 +1,7 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using OrderManagement.API.Extensions;
 using OrderManagement.API.Middlewares;
 using OrderManagement.Infrastructure.Connections;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,23 +41,7 @@ builder.Services.AddCors(options =>
 });
 
 // Enable JWT.
-builder.Services.AddHttpContextAccessor()
-    .AddAuthorization()
-    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["JWT:Issuer"],
-            ValidAudience = builder.Configuration["JWT:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"] ?? "")),
-        };
-        //options.Events = new AuthorizeHandler();
-    });
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
 var app = builder.Build();
 
