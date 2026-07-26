@@ -8,12 +8,7 @@ public class OrderService(IOrderRepository _repository) : IOrderService
 {
     public Task<Order> CreateAsync(short businessId, Order order)
     {
-        order.BusinessId = businessId;
-        foreach (OrderDetail orderDetail in order.OrderDetails)
-        {
-            orderDetail.Order = order;
-        }
-
+        PrepareOrderForCreation(businessId, order);
         return _repository.CreateAsync(order);
     }
 
@@ -25,5 +20,15 @@ public class OrderService(IOrderRepository _repository) : IOrderService
     public Task<Order?> GetByBusinessAndCustomerAsync(short businessId, int customerId, int orderId)
     {
         return _repository.FindByBusinessAndCustomerAsync(businessId, customerId, orderId);
+    }
+
+    private static void PrepareOrderForCreation(short businessId, Order order)
+    {
+        order.BusinessId = businessId;
+
+        foreach (OrderDetail orderDetail in order.OrderDetails)
+        {
+            orderDetail.Order = order;
+        }
     }
 }
