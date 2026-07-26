@@ -21,16 +21,7 @@ public class CommonController : ControllerBase
     {
         get
         {
-            string value = GetTokenClaim("businessId") ?? Request.Headers["X-Business-Id"].ToString();
-
-            if (!short.TryParse(value, out short businessId))
-            {
-                throw new BadHttpRequestException(
-                    "businessId is mandatory in token or X-Business-Id header and must be numeric."
-                );
-            }
-
-            return businessId;
+            return GetRequiredShortIdentifier("businessId", "X-Business-Id", "businessId");
         }
     }
 
@@ -41,19 +32,7 @@ public class CommonController : ControllerBase
     {
         get
         {
-            string value = GetTokenClaim(ClaimTypes.Sid)
-                ?? GetTokenClaim("sid")
-                ?? GetTokenClaim("userId")
-                ?? Request.Headers["X-User-Id"].ToString();
-
-            if (!int.TryParse(value, out int userId))
-            {
-                throw new BadHttpRequestException(
-                    "userId is mandatory in token or X-User-Id header and must be numeric."
-                );
-            }
-
-            return userId;
+            return GetRequiredIntIdentifier("userId", "X-User-Id", ClaimTypes.Sid, "sid", "userId");
         }
     }
 
@@ -64,16 +43,7 @@ public class CommonController : ControllerBase
     {
         get
         {
-            string value = GetTokenClaim("customerId") ?? Request.Headers["X-Customer-Id"].ToString();
-
-            if (!int.TryParse(value, out int customerId))
-            {
-                throw new BadHttpRequestException(
-                    "customerId is mandatory in token or X-Customer-Id header and must be numeric."
-                );
-            }
-
-            return customerId;
+            return GetRequiredIntIdentifier("customerId", "X-Customer-Id", "customerId");
         }
     }
 
@@ -99,5 +69,44 @@ public class CommonController : ControllerBase
 
         string? value = HttpContext.User.Claims.FirstOrDefault(claim => claim.Type == claimType)?.Value;
         return string.IsNullOrWhiteSpace(value) ? null : value;
+    }
+
+    private short GetRequiredShortIdentifier(string fieldName, string headerName, params string[] claimTypes)
+    {
+        string value = GetIdentifierValue(headerName, claimTypes);
+
+        if (!short.TryParse(value, out short identifier))
+        {
+            throw new BadHttpRequestException(
+                $"{fieldName} is mandatory in token or {headerName} header and must be numeric."
+            );
+        }
+
+        return identifier;
+    }
+
+    private int GetRequiredIntIdentifier(string fieldName, string headerName, params string[] claimTypes)
+    {
+        string value = GetIdentifierValue(headerName, claimTypes);
+
+        if (!int.TryParse(value, out int identifier))
+        {
+            throw new BadHttpRequestException(
+                $"{fieldName} is mandatory in token or {headerName} header and must be numeric."
+            );
+        }
+
+        return identifier;
+    }
+
+    private string GetIdentifierValue(string headerName, params string[] claimTypes)
+    {
+        foreach (string claimType in claimTypes)
+        {
+            string? claimValue = GetTokenClaim(claimType);
+            if (!string.IsNullOrWhiteSpace(claimValue)) return claimValue;
+        }
+
+        return Request.Headers[headerName].ToString();
     }
 }
