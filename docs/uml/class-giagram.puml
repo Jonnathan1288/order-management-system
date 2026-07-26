@@ -1,22 +1,10 @@
-@startuml
-title Sistema de Gestión de Pedidos - Diagrama de Clases
+﻿@startuml
+title Sistema de GestiÃ³n de Pedidos - Diagrama de Clases
 
 skinparam classAttributeIconSize 0
 skinparam linetype ortho
 skinparam shadowing false
 skinparam packageStyle rectangle
-
-enum EstadoPedido {
-  ACTIVO
-  CANCELADO
-  COMPLETADO
-}
-
-enum EstadoCarrito {
-  ACTIVO
-  CANCELADO
-  COMPLETADO
-}
 
 enum Rol {
   ADMINISTRADOR
@@ -114,8 +102,8 @@ class CarritoCompras {
   - empresaId: short
   - clienteId: int
   - codigo: string
-  - datos: JsonDocument
-  - estado: EstadoCarrito
+  - payload: Dictionary<string, object>
+  - estado: string
   - activo: bool
   - fechaCreacion: DateTime
   - fechaActualizacion: DateTime
@@ -126,7 +114,7 @@ class Pedido {
   - empresaId: short
   - clienteId: int
   - metodoPagoId: short
-  - estado: EstadoPedido
+  - estado: string
   - fechaPedido: DateTime
   - total: decimal
   - subtotal: decimal
@@ -164,7 +152,7 @@ Empresa "1" -- "0..*" Pedido
 
 Usuario "1" -- "0..1" Cliente
 
-Categoria "0..1" -- "0..*" Categoria : padre / subcategorías
+Categoria "0..1" -- "0..*" Categoria : padre / subcategorias
 Categoria "1" -- "0..*" Producto
 
 Cliente "1" -- "0..*" CarritoCompras
@@ -176,7 +164,7 @@ Pedido "1" *-- "1..*" DetallePedido
 Producto "1" -- "0..*" DetallePedido
 
 Usuario ..> Rol : utiliza
-CarritoCompras ..> EstadoCarrito : utiliza
-Pedido ..> EstadoPedido : utiliza
 
 @enduml
+
+
